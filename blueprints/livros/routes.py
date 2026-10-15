@@ -3,6 +3,9 @@ from blueprints.auth import auth_bp
 import database
 
 
+# Por enquanto em manutenção !!
+
+
 # @auth_bp.route("/")
 # def index():
 #     livros = Livro.query.all()
