@@ -1,9 +1,10 @@
-from flask import render_template, request, session, redirect, url_for
-from blueprints.auth import auth_bp
-import database
+# from flask import render_template, request, session, redirect, url_for,flash
+# from blueprints.auth import auth_bp
+# from models import Livro
+# import database
 
 
-# Por enquanto em manutenção !!
+# # Por enquanto em manutenção !!
 
 
 # @auth_bp.route("/")
@@ -40,4 +41,20 @@ import database
 #         return redirect(url_for("livros.index"))
 
 #     return render_template("livros/formulario.html")
+
+
+
+# @auth_bp.route("/livros/buscar", methods=["GET", "POST"])
+# def buscar_livro():
+#     if request.method == "POST":
+#         busca = request.form.get("busca")
+
+#         livros = Livro.query.filter(
+#             (Livro.titulo.contains(busca)) |
+#             (Livro.autor.contains(busca))
+#         ).all()
+
+#         return render_template("livros/index.html", livros=livros)
+
+#     return render_template("livros/index.html", livros=[])
 
