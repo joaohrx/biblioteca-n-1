@@ -7,5 +7,5 @@ class Base(DeclarativeBase):
 
 
 engine = create_engine("sqlite:///biblioteca.db", echo = True)
-_sessao = sessionmaker( bind = engine)
-sessao = _sessao()
+_Sessao = sessionmaker( bind = engine)
+sessao = _Sessao()
