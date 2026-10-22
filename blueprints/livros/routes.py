@@ -7,14 +7,14 @@ import database
 # Por enquanto em manutenção !!
 
 
-@auth_bp.route("/")
+@livro_bp.route("/")
 def index():
     livros = Livro.query.all()
     return render_template("livros/index.html", livros=livros)
     
 
 
-@auth_bp.route("/livros/adicionar/<int:livro_id>", methods=["GET", "POST"])
+@livro_bp.route("/livros/adicionar/<int:livro_id>", methods=["GET", "POST"])
 def adicionar_livro():
     if request.method == "POST":
         titulo = request.form.get("titulo")
@@ -40,21 +40,13 @@ def adicionar_livro():
         flash("Livro cadastrado com sucesso!", "sucesso")
         return redirect(url_for("livros.index"))
 
-    return render_template("livros/formulario.html")
+    return render_template("adicionar_livro.html")
 
+@livro_bp.route("/home")
+def home():
+    return render_template("home.html")
 
-
-@auth_bp.route("/livros/buscar", methods=["GET", "POST"])
-def buscar_livro():
-    if request.method == "POST":
-        busca = request.form.get("busca")
-
-        livros = Livro.query.filter(
-            (Livro.titulo.contains(busca)) |
-            (Livro.autor.contains(busca))
-        ).all()
-
-        return render_template("livros/index.html", livros=livros)
-
-    return render_template("livros/index.html", livros=[])
+@livro_bp.route("/perfil")
+def perfil():
+    return render_template("perfil.html")
 
