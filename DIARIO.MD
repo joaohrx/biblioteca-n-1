@@ -8,3 +8,6 @@ Próximo passo: CRUD básico
 
 Data  15/10 e 18/10  
 O que foi feito: primeiras rotas de adicionar e buscar livro.
+
+Data 21/10
+o que foi feito: rotas de cadastro , login e logout
