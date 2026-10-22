@@ -1,29 +1,47 @@
+from database import Base
 from typing import List
-from sqlalchemy import ForeignKey, String
+from sqlalchemy import String, Integer, Boolean, ForeignKey, Table, Column
 from sqlalchemy.orm import Mapped, mapped_column, relationship
 
-from database import Base
 
+leitores_livros_tabela = Table(
+    "leitores_livros",
+    Base.metadata,
+    Column("leitor_id", ForeignKey("leitores.id"), primary_key=True),
+    Column("livros_id", ForeignKey("livros.id"), primary_key=True),
 
-#   Em manutenção
-
-    
-
-class Usuario(Base):
-    __tablename__ = "usuarios"
-
-    id: Mapped[int] = mapped_column(autoincrement=True, primary_key=True)
-    nome:Mapped[String] = mapped_column(String(80), nullable=False)
-    email:Mapped[String] = mapped_column(String(80), unique=True)
-
-    livros: Mapped[List["Livro"]] = relationship(back_populates="usuarios")
-
+)
 
 class Livro(Base):
-    __tablename__ = "livros"
+    __tablename__ = 'livros'
 
-    id:Mapped[int] = mapped_column(autoincrement=True, primary_key=True)
-    titulo: Mapped[String] = mapped_column(String(100), nullable=False)
-    id_usuario:Mapped[int] = mapped_column(ForeignKey("usuarios.id"))
+    id: Mapped[int] = mapped_column(Integer, primary_key = True)
+    titulo: Mapped[str] = mapped_column(String(50))
+    ano: Mapped[int] = mapped_column() 
+    empretado: Mapped[bool] = mapped_column(Boolean, default=False)
 
-    usuarios: Mapped["Usuario"] = relationship(back_populates="livros")
+    autor_id: Mapped[int] = mapped_column(ForeignKey("autores.id"))
+    autor: Mapped[Autor] = relationship(back_populates = 'livro')
+
+    leitor: Mapped[List[Leitor]] = relationship(
+        secondary= leitores_livros_tabela, back_populates= 'livro_leitor'
+    )
+
+class Autor(Base):
+    __tablename__ = "autores"
+
+    id: Mapped[int] = mapped_column(Integer, primary_key = True)
+    nome: Mapped[str] = mapped_column(String(50), unique = True)
+
+    livro: Mapped[List['Livro']] = relationship(back_populates = 'autor')
+
+
+class Leitor(Base):
+    __tablename__ = "leitores"
+
+    id: Mapped[int] = mapped_column(Integer, primary_key = True)
+    nome: Mapped[str] = mapped_column(String(50), unique = True)
+
+    livro_leitor: Mapped[List[Livro]] = relationship(
+        secondary = leitores_livros_tabela, back_populates='leitor'
+    )
