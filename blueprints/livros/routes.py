@@ -14,7 +14,7 @@ def index():
     
 
 
-@auth_bp.route("/livros/adicionar", methods=["GET", "POST"])
+@auth_bp.route("/livros/adicionar/<int:livro_id>", methods=["GET", "POST"])
 def adicionar_livro():
     if request.method == "POST":
         titulo = request.form.get("titulo")
