@@ -1,5 +1,5 @@
 from flask import render_template, request,  redirect, url_for,flash,session
-from blueprints.auth import auth_bp
+from blueprints.auth import livro_bp
 from models import Livro
 import database
 
