@@ -11,3 +11,6 @@ o que feito: a criação basica do banco de dados, com a criação das tabelas l
 e o arquivo init_db que é o construtr do banco
 a tabela leitore_livros foi cirada e todos os relationship foram feitos, com todos os relacionamentos
 o arquivo seed.py foi deletado, pois    não há utilidade para ele
+
+Data: 22/10/2026
+O que feito: o arquivo crud.py foi criado e todos os teste foram feitos

@@ -1,10 +1,11 @@
-from database import engine, Base, sessao, _Sessao
+from database import engine,  sessao, _Sessao, criar_banco
 from models import Livro, Autor, Leitor, leitores_livros_tabela
 from sqlalchemy import select
 
-Base.metadata.create_all(bind = engine)
-""" 
-with _Sessao() as sessao:
+
+criar_banco()
+
+""" with _Sessao() as sessao:
     autor = Autor(
         nome = "clarice lispecter"
     )
@@ -13,9 +14,8 @@ with _Sessao() as sessao:
     )
     sessao.add_all([autor,leitor])
     sessao.commit()
-"""
 
-""" with _Sessao() as sessao:
+with _Sessao() as sessao:
     query = select(Autor).where(Autor.nome == "clarice lispecter")
     autor_existente = sessao.scalar(query)
 
@@ -25,23 +25,27 @@ with _Sessao() as sessao:
         )
         sessao.add(livro)
         sessao.commit()
- """
+ 
 
-""" with _Sessao() as sessao:
+with _Sessao() as sessao:
     query = select(Livro).join(Autor, Livro.autor_id == Autor.id)
     livros = sessao.scalars(query).all()
     for livro in livros:
-        print(f"Livro: {livro.titulo} | Autor: {livro.autor.nome}")
- """
+       print(f"Livro: {livro.titulo} | Autor: {livro.autor.nome}")
+
 
 with _Sessao() as sessao:
-    query = select(Leitor).where(Leitor.nome == "joao pedro")
-    leitores_existente = sessao.scalar(query)
+    query = sessao.scalar(select(Leitor).where(Leitor.nome == "joao pedro"))
 
-    query_ivro = select(Livro).where(Livro.titulo == "hora da estrela")
-    livro_existe = sessao.scalar(query)
+    query_livro = sessao.scalar(select(Livro).where(Livro.titulo == "hora da estrela"))
 
-    if leitores_existente and livro_existe:
-        leitor_livro = leitores_livros_tabela(leitor_id = leitores_existente.id, livros_id = livro_existe.id)
-        sessao.add(leitor_livro)
+
+    if query and query_livro:
+        query.livro_leitor.append(query_livro)
+        query_livro.empretado = True
         sessao.commit()
+
+        
+
+        TESTE DO BANCO: TODOS FUNCIONAM
+ """
