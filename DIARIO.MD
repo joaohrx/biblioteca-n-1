@@ -11,3 +11,10 @@ O que foi feito: primeiras rotas de adicionar e buscar livro.
 
 Data 21/10
 o que foi feito: rotas de cadastro , login e logout
+
+Durante a aula ainda do  21/10
+o que foi feito:um pequeno inicio da classe declarative (base) e foi feito a classe usuario e livro com seus relacionamentos e atributos como nome,id, email, titulo, usuario_id etc...
+
+
+
+
