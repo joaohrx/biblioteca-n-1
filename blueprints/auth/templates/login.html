@@ -1,4 +1,17 @@
 {% extends "base.html" %}
 {% block titulo %} Login {% endblock %}
 {% block conteudo %}
+
+{% block estilos %}
+<link rel="stylesheet"
+      href="{{ url_for('static', filename='css/auth.css') }}">
+{% endblock %}
+
+<h1 id="bem_vindo_auth">Login</h1>
+<form method="POST">
+    <input type="text" name="email" id="email" placeholder="Email" required>
+    <input type="password" name="senha" id="senha" placeholder="Senha" required>
+    <button type="submit">Entrar</button>
+
+</form>
 {% endblock %}

@@ -69,3 +69,14 @@
 **Como resolvi:** Corrigi o nome dos Blueprints e adaptei o código das rotas para se adequar à nomenclatura do Banco.
 
 **Próximo passo:** Fazer os templates individuais e as consultas do CRUD.
+
+---
+
+### Data: 23/10
+**O que foi feito:** Criação da pasta `static` com o CSS das páginas individuais, design e conteúdo dos primeiros templates-filhos: index, login e cadastro.
+
+**Dificuldade encontrada:** Dificuldades para igualizar o rodapé em todas as páginas.
+
+**Como resolvi:** Definindo margin-auto no `footer` e ajustando o corpo no template-base.
+
+**Próximo passo:** Desenvolver os templates-filhos restantes e seus respectivos estilos

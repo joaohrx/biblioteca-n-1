@@ -1,4 +1,18 @@
 {% extends "base.html" %}
 {% block titulo %} Cadastro {% endblock %}
+
+{% block estilos %}
+<link rel="stylesheet"
+      href="{{ url_for('static', filename='css/auth.css') }}">
+{% endblock %}
+
 {% block conteudo %}
+<h1 id="bem_vindo_auth">Cadastro</h1>
+<form method="POST">
+    <input type="text" name="nome" id="nome" placeholder="Usuário" required>
+    <input type="text" name="email" id="email" placeholder="Email" required>
+    <input type="password" name="senha" id="senha" placeholder="Senha" required>
+    <button type="submit">Cadastrar</button>
+
+</form>
 {% endblock %}
