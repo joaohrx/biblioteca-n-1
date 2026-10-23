@@ -14,7 +14,7 @@
 
 ### Data: 15/10 e 18/10
 
-**O que foi feito:** Primeiras rotas de adicionar e buscar livro.
+**O que foi feito:** Primeiras rotas de adicionar e buscar livro. Rotas de login, cadastro e logout
 
 **Dificuldade encontrada:** Não informada.
 
