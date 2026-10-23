@@ -1,5 +1,5 @@
 from flask import render_template, request, session, redirect, url_for,flash
-from models import Usuario
+from models import Leitor
 from werkzeug.security import generate_password_hash,check_password_hash
 
 from blueprints.auth import auth_bp

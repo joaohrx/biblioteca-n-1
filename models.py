@@ -21,9 +21,9 @@ class Livro(Base):
     empretado: Mapped[bool] = mapped_column(Boolean, default=False)
 
     autor_id: Mapped[int] = mapped_column(ForeignKey("autores.id"))
-    autor: Mapped[Autor] = relationship(back_populates = 'livro')
+    autor: Mapped['Autor'] = relationship(back_populates = 'livro')
 
-    leitor: Mapped[List[Leitor]] = relationship(
+    leitor: Mapped[List['Leitor']] = relationship(
         secondary= leitores_livros_tabela, back_populates= 'livro_leitor'
     )
 
