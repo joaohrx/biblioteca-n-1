@@ -1,5 +1,5 @@
 from database import  sessao, _Sessao, criar_banco
-from models import Livro, Autor
+from models import Livro, Autor, Leitor
 from sqlalchemy import select
 
 
@@ -64,5 +64,13 @@ with _Sessao() as sessao:
         sessao.commit()
  
         
+with _Sessao() as sessao:
+    leitor = Leitor(
+        nome = "joao pedro",
+        #hash falso
+        senha_hash = "skdpasdpoaskdpaoskd"
+    )
+    sessao.add(leitor)
+    sessao.commit()
 
 

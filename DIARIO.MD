@@ -69,3 +69,13 @@
 **Como resolvi:** Corrigi o nome dos Blueprints e adaptei o código das rotas para se adequar à nomenclatura do Banco.
 
 **Próximo passo:** Fazer os templates individuais e as consultas do CRUD.
+
+### Data: 23/10
+
+**O que foi feito:** funções de filtragem, adição e busca dentro do aquivo crud.py
+
+**Dificuldade encontrada:** nenhuma.
+
+**Como resolvi:** .
+
+**Próximo passo:** terminar as outras filtagrem e buscas.

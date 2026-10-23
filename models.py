@@ -18,7 +18,7 @@ class Livro(Base):
     id: Mapped[int] = mapped_column(Integer, primary_key = True)
     titulo: Mapped[str] = mapped_column(String(50))
     ano: Mapped[int] = mapped_column() 
-    empretado: Mapped[bool] = mapped_column(Boolean, default=False)
+    emprestado: Mapped[bool] = mapped_column(Boolean, default=False)
     genero: Mapped[str] = mapped_column(String(50))
 
     autor_id: Mapped[int] = mapped_column(ForeignKey("autores.id"))
