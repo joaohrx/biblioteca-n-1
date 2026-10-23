@@ -1,5 +1,5 @@
-from flask import render_template, request,  redirect, url_for,flash,session
-from blueprints.auth import livro_bp
+from flask import render_template, request,  redirect, url_for,flash, session
+from blueprints.livros import livros_bp
 from models import Livro
 import database
 
@@ -7,14 +7,13 @@ import database
 # Por enquanto em manutenção !!
 
 
-@livro_bp.route("/")
+@livros_bp.route("/")
 def index():
-    livros = Livro.query.all()
-    return render_template("livros/index.html", livros=livros)
+    return render_template("index.html")
     
 
 
-@livro_bp.route("/livros/adicionar/<int:livro_id>", methods=["GET", "POST"])
+@livros_bp.route("/livros/adicionar/<int:livro_id>", methods=["GET", "POST"])
 def adicionar_livro():
     if request.method == "POST":
         titulo = request.form.get("titulo")
@@ -38,15 +37,15 @@ def adicionar_livro():
         db.session.commit()
 
         flash("Livro cadastrado com sucesso!", "sucesso")
-        return redirect(url_for("livros.index"))
+        return redirect(url_for("livros.home"))
 
     return render_template("adicionar_livro.html")
 
-@livro_bp.route("/home")
+@livros_bp.route("/home")
 def home():
     return render_template("home.html")
 
-@livro_bp.route("/perfil")
+@livros_bp.route("/perfil")
 def perfil():
     return render_template("perfil.html")
 
