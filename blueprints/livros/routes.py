@@ -36,14 +36,57 @@ def adicionar_livro():
         db.session.add(livro)
         db.session.commit()
 
-        flash("Livro cadastrado com sucesso!", "sucesso")
+        flash("Livro cadastrado com sucesso!")
         return redirect(url_for("livros.home"))
 
     return render_template("adicionar_livro.html")
 
+
+
+
+@livros_bp.route("/livros/editar/<int:id>", methods=["GET", "POST"])
+def editar_livro(id):
+    livro=Livro.query.filter_by(id=id).first()
+
+    if livro is None:
+        return "Livro não encontrado"
+
+    if request.method == "POST":
+        livro.titulo =request.form.get("titulo")
+        livro.autor =request.form.get("autor")
+
+        ano = request.form.get("ano")
+        quantidade = request.form.get("quantidade")
+
+        livro.ano = int(ano) if ano else None
+        livro.quantidade = int(quantidade)
+
+        database.db.session.commit()
+
+        flash("Livro atualizado com sucesso!")
+        return redirect(url_for("livros.index"))
+
+    return render_template("livros/editar.html", livro=livro)
+
+
+
+@livros_bp.route("/livros/excluir/<int:id>", methods=["POST"])
+def excluir_livro(id):
+    livro = Livro.query.filter_by(id=id).first()
+
+    if livro is None:
+        return " O Livro não foi  encontrado"
+
+    database.db.session.delete(livro)
+    database.db.session.commit()
+
+    flash("Livro excluído com sucesso!")
+    return redirect(url_for("livros.index"))
+
 @livros_bp.route("/home")
 def home():
-    return render_template("home.html")
+    livros_cadastrados = Livro.query.all()
+    return render_template("home.html", livros_cadastrados=livros_cadastrados)
 
 @livros_bp.route("/perfil")
 def perfil():

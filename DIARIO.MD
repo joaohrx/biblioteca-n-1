@@ -14,13 +14,13 @@
 
 ### Data: 15/10 e 18/10
 
-**O que foi feito:** Primeiras rotas de adicionar e buscar livro. Rotas de login, cadastro e logout
+**O que foi feito:** Primeiras rotas de adicionar de login, cadastro e logout
 
-**Dificuldade encontrada:** Não informada.
+**Dificuldade encontrada:** Tive que buscar entender  algumas informaçoes .
 
-**Como resolvi:** Não informado.
+**Como resolvi:** Foi necessario buscar e tirar duvidas em materiais, em pesquisas video aulas .
 
-**Próximo passo:** Não informado.
+**Próximo passo:** Criar as rotas de Excluir e Editar.
 
 ---
 
@@ -69,3 +69,14 @@
 **Como resolvi:** Corrigi o nome dos Blueprints e adaptei o código das rotas para se adequar à nomenclatura do Banco.
 
 **Próximo passo:** Fazer os templates individuais e as consultas do CRUD.
+
+
+### Data: 24/10
+
+**O que foi feito:** Rotas de editar , excluir e adptei a rota home para mostrar todos os livros cadastrados.
+
+**Dificuldade encontrada:** tive que tire duvidas e buscar entender como fazer cada.
+
+**Como resolvi:** consulta em materias, pesquisas e videos no youtube .
+
+**Próximo passo:** fazer rotas de emprestar e devolver livro.
