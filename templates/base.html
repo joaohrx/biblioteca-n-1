@@ -5,8 +5,10 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Biblioteca n+1</title>
+
     <link rel="stylesheet"
-      href="{{ url_for('static', filename='css/base.css') }}">
+          href="{{ url_for('static', filename='css/base.css') }}">
+
     {% block estilos %}{% endblock %}
 </head>
 
@@ -17,18 +19,24 @@
         <nav>
             {% if not usuario %}
                 <a href="{{ url_for('auth.cadastro') }}">Cadastro</a>
+                <a href="{{ url_for('auth.login') }}">Login</a>
             {% else %}
-                <a href="{{url_for(livros.home)}}">Home</a>
+                <a href="{{ url_for(livros.home) }}">Home</a>
                 <a href="{{ url_for('livros.perfil') }}">Perfil</a>
                 <a href="{{ url_for('auth.logout') }}">Sair</a>
             {% endif %}
         </nav>
     </header>
+
     {% block conteudo %}{% endblock %}
+
+    
     <footer>
         <hr>
-        <span>Biblioteca n+1</span> <br>
-        <span>© 2026</span>
+        <div class="rodape">
+            <span>Biblioteca n+1</span>
+            <span id="copyright">© 2026</span>
+        </div>
     </footer>
 </body>
 </html>

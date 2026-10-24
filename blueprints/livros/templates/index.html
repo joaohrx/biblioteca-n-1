@@ -1,4 +1,3 @@
-
 {% extends "base.html" %}
 
 {% block titulo %}Biblioteca n+1{% endblock %}
@@ -25,5 +24,12 @@
             <a href="{{ url_for('auth.login') }}">Já sou leitor</a>
         </nav>
     </section>
+
+    <div class="imagem">
+        <img
+            src="{{ url_for('static', filename='img/gato.png') }}"
+            alt=""
+        >
+    </div>
 </main>
 {% endblock %}

@@ -1,72 +1,86 @@
-        * {
-            box-sizing: border-box;
-        }
 
-        body {
-            margin: 0;
-            min-height: 93vh;
-            display: flex;
-            flex-direction: column;
+* {
+    box-sizing: border-box;
+}
 
-            font-family: "Times New Roman", Times, serif;
-            background-color: #e9e9e9;
-            color: #080808;
-        }
+@font-face {
+    font-family: "Adobe Caslon";
+    src: url("/static/fontes/ACaslonPro-Regular.otf") format("opentype");
+    font-weight: normal;
+    font-style: normal;
+    font-display: swap;
+}
 
-        header {
-            display: flex;
-            align-items: center;
-            justify-content: space-between;
-            padding: 20px 100px;
-            background-color: #e9e9e9;
-            border-bottom: 1px solid #080808;
-        }
+body {
+    margin: 0;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
 
-        h1 {
-            margin: 0;
-            font-size: 40px;
-            font-weight: normal;
-        }
+    font-family: "Adobe Caslon", serif;
+    background-color: #e9e9e9;
+    color: #080808;
+}
 
-        nav {
-            display: flex;
-            align-items: center;
-        }
+header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 10px 100px;
+    background-color: #e9e9e9;
+    border-bottom: 1px solid #080808;
+}
 
-        nav a {
-            margin: 0;
-            padding: 10px 18px;
-            font-size: 20px;
-            cursor: pointer;
-            transition: color 0.3s;
-            text-decoration: none;
-            color: inherit;
-        }
+h1 {
+    margin: 0;
+    font-size: 40px;
+    font-weight: normal;
+}
 
-        nav a:hover {
-            color: #8b7355;
-        }
+nav {
+    display: flex;
+    align-items: center;
+}
 
-        footer {
-         margin-top: auto;
-        }       
+nav a {
+    margin: 0;
+    padding: 10px 18px;
+    font-size: 20px;
+    cursor: pointer;
+    transition: color 0.3s;
+    text-decoration: none;
+    color: inherit;
+}
 
-        footer hr {
-        border: none;
-        border-top: 1px solid #080808;
-        margin: 0 0 16px;
-        }   
+nav a:hover {
+    color: #8b7355;
+}
 
-        footer div {
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        gap: 20px;
-        padding: 0 100px 20px;
-        }
 
-        footer span {
-        margin-left: 80px;
-        font-size: 18px;
-        color: #080808;
-        }
+
+footer {
+    margin-top: auto;
+}
+
+footer hr {
+    border: none;
+    border-top: 1px solid #080808;
+    margin: 0;
+}
+
+
+
+.rodape {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 18px 100px 22px;
+}
+
+.rodape span {
+    margin: 0;
+    padding: 0;
+    font-family: "Adobe Caslon", serif;
+    font-size: 15px;
+    color: #080808;
+}
