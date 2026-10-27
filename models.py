@@ -20,6 +20,7 @@ class Livro(Base):
     ano: Mapped[int] = mapped_column() 
     emprestado: Mapped[bool] = mapped_column(Boolean, default=False)
     genero: Mapped[str] = mapped_column(String(50))
+    descricao: Mapped[str] = mapped_column(String(100))
 
     autor_id: Mapped[int] = mapped_column(ForeignKey("autores.id"))
     autor: Mapped['Autor'] = relationship(back_populates = 'livro')

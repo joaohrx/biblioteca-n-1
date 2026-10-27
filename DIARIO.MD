@@ -79,3 +79,14 @@
 **Como resolvi:** .
 
 **Próximo passo:** terminar as outras filtagrem e buscas.
+
+
+### Data: 27/10
+
+**O que foi feito:** todas as buscas, filtragen, adição e edição foram adicionadas e testadas
+**Dificuldade encontrada:** apagar o as informações da tabela auxiliar.
+
+**Como resolvi:**  para resolver o problema, foi necessario usar o remove, pois como leitor armazena uma lista de livros
+                    é necessario remover apenas aquele var para desfazer o relacionamento
+
+**Próximo passo:** terminar as rotas.
