@@ -1,6 +1,6 @@
 from database import Base
 from typing import List
-from sqlalchemy import String, Integer, Boolean, ForeignKey, Table, Column
+from sqlalchemy import String, Integer, Boolean, ForeignKey, Table, Column, Text
 from sqlalchemy.orm import Mapped, mapped_column, relationship
 
 
@@ -18,7 +18,9 @@ class Livro(Base):
     id: Mapped[int] = mapped_column(Integer, primary_key = True)
     titulo: Mapped[str] = mapped_column(String(50))
     ano: Mapped[int] = mapped_column() 
-    empretado: Mapped[bool] = mapped_column(Boolean, default=False)
+    emprestado: Mapped[bool] = mapped_column(Boolean, default=False)
+    genero: Mapped[str] = mapped_column(String(50))
+    descricao: Mapped[str] = mapped_column(String(100))
 
     autor_id: Mapped[int] = mapped_column(ForeignKey("autores.id"))
     autor: Mapped['Autor'] = relationship(back_populates = 'livro')
@@ -40,7 +42,8 @@ class Leitor(Base):
     __tablename__ = "leitores"
 
     id: Mapped[int] = mapped_column(Integer, primary_key = True)
-    nome: Mapped[str] = mapped_column(String(50), unique = True)
+    nome: Mapped[str] = mapped_column(String(100), unique = True)
+    senha_hash: Mapped[str] = mapped_column(Text)
 
     livro_leitor: Mapped[List[Livro]] = relationship(
         secondary = leitores_livros_tabela, back_populates='leitor'

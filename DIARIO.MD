@@ -28,11 +28,11 @@
 
 **O que foi feito:** A criação básica do banco de dados, com a criação das tabelas livros, autores e leitores. A tabela leitores_livros foi criada e todos os `relationship` foram feitos, com todos os relacionamentos. O arquivo `seed.py` foi deletado, pois não há utilidade para ele. Rotas de cadastro, login e logout também foram feitas.
 
-**Dificuldade encontrada:** Não informada.
+**Dificuldade encontrada:** as tabelas não estavam sendo criadas.
 
-**Como resolvi:** Não informado.
+**Como resolvi:** usei a função criar_banco no init.db.
 
-**Próximo passo:** Não informado.
+**Próximo passo:** criar o crud e organizar os arquivos.
 
 ---
 
@@ -40,11 +40,11 @@
 
 **O que foi feito:** Um pequeno início da classe declarative (`Base`) e foi feita a classe `Usuario` e `Livro` com seus relacionamentos e atributos como nome, id, email, titulo, usuario_id etc.
 
-**Dificuldade encontrada:** Não informada.
+**Dificuldade encontrada:** nenhuma.
 
 **Como resolvi:** Não informado.
 
-**Próximo passo:** Não informado.
+**Próximo passo:** estruturar o crud.
 
 ---
 
@@ -52,11 +52,11 @@
 
 **O que foi feito:** O arquivo `crud.py` foi criado e todos os testes foram feitos.
 
-**Dificuldade encontrada:** Não informada.
+**Dificuldade encontrada:** nenhuma.
 
 **Como resolvi:** Não informado.
 
-**Próximo passo:** Não informado.
+**Próximo passo:** estruturar o crud.
 
 ---
 
@@ -69,3 +69,24 @@
 **Como resolvi:** Corrigi o nome dos Blueprints e adaptei o código das rotas para se adequar à nomenclatura do Banco.
 
 **Próximo passo:** Fazer os templates individuais e as consultas do CRUD.
+
+### Data: 23/10
+
+**O que foi feito:** funções de filtragem, adição e busca dentro do aquivo crud.py
+
+**Dificuldade encontrada:** nenhuma.
+
+**Como resolvi:** .
+
+**Próximo passo:** terminar as outras filtagrem e buscas.
+
+
+### Data: 27/10
+
+**O que foi feito:** todas as buscas, filtragen, adição e edição foram adicionadas e testadas
+**Dificuldade encontrada:** apagar o as informações da tabela auxiliar.
+
+**Como resolvi:**  para resolver o problema, foi necessario usar o remove, pois como leitor armazena uma lista de livros
+                    é necessario remover apenas aquele var para desfazer o relacionamento
+
+**Próximo passo:** terminar as rotas.
