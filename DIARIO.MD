@@ -80,3 +80,13 @@
 **Como resolvi:** consulta em materias, pesquisas e videos no youtube .
 
 **Próximo passo:** fazer rotas de emprestar e devolver livro.
+
+### Data: 28/10
+
+**O que foi feito:** Rotas de devolver e emprestar.
+
+**Dificuldade encontrada:** tive que tire duvidas e buscar entender como fazer cada.
+
+**Como resolvi:** consulta em materias, pesquisas e videos no youtube .
+
+**Próximo passo:** 

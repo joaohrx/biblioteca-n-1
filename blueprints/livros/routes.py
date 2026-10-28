@@ -23,7 +23,7 @@ def adicionar_livro():
 
         if not titulo or not autor:
             flash("Preencha o título e o autor.", "erro")
-            return render_template("livros/formulario.html")
+            return render_template("")
 
         livro = Livro(
             titulo=titulo,
@@ -39,7 +39,7 @@ def adicionar_livro():
         flash("Livro cadastrado com sucesso!")
         return redirect(url_for("livros.home"))
 
-    return render_template("adicionar_livro.html")
+    return render_template("")
 
 
 
@@ -64,9 +64,9 @@ def editar_livro(id):
         database.db.session.commit()
 
         flash("Livro atualizado com sucesso!")
-        return redirect(url_for("livros.index"))
+        return redirect(url_for(""))
 
-    return render_template("livros/editar.html", livro=livro)
+    return render_template("", livro=livro)
 
 
 
@@ -81,7 +81,50 @@ def excluir_livro(id):
     database.db.session.commit()
 
     flash("Livro excluído com sucesso!")
-    return redirect(url_for("livros.index"))
+    return redirect(url_for(""))
+
+
+
+
+
+@livros_bp.route("/livros/emprestar/<int:id>", methods=["POST"])
+def emprestar_livro(id):
+
+    livro=Livro.query.filter_by(id=id).first()
+
+    if livro is None:
+        return "Livro não encontrado"
+
+    if livro.disponiveis > 0:
+
+        livro.disponiveis = livro.disponiveis - 1
+
+        database.db.session.commit()
+        flash("Livro emprestado!")
+    else:
+        flash("Não há livros disponíveis para empréstimo no momento!.")
+
+    return redirect(url_for(""))
+
+
+
+
+@livros_bp.route("/livros/devolver/<int:id>", methods=["POST"])
+def devolver_livro(id):
+    livro = Livro.query.filter_by(id=id).first()
+
+    if livro is None:
+        return "Livro não encontrado"
+
+    if livro.disponiveis < livro.quantidade:
+        livro.disponiveis = livro.disponiveis + 1
+        database.db.session.commit()
+        flash("Livro devolvido com sucesso!")
+    else:
+        flash("Todos os livros já estão disponíveis.")
+
+    return redirect(url_for(""))
+
 
 @livros_bp.route("/home")
 def home():
