@@ -4,6 +4,10 @@ from models import Livro
 import database
 
 
+from crud import (
+    adicionar_livro,buscar_livro_titulo
+)
+
 # Por enquanto em manutenção !!
 
 
@@ -19,27 +23,44 @@ def adicionar_livro():
         titulo = request.form.get("titulo")
         autor = request.form.get("autor")
         ano = request.form.get("ano")
-        quantidade = request.form.get("quantidade")
+        genero = request.form.get("genero")
+        descricao = request.form.get("descricao")
 
-        if not titulo or not autor:
-            flash("Preencha o título e o autor.", "erro")
+        if not titulo or not autor or not ano or not genero or not descricao:
+            flash("Preencha todos os devidos campos por favor !")
             return render_template("")
 
-        livro = Livro(
-            titulo=titulo,
-            autor=autor,
-            ano=int(ano) if ano else None,
-            quantidade=int(quantidade),
-            disponiveis=int(quantidade)
-        )
+        adicao = {
+            "titulo": titulo,
+            "ano": int(ano),
+            "genero": genero,
+            "descricao": descricao
+        }
 
-        db.session.add(livro)
-        db.session.commit()
+        cadastrar_livro(adicao, autor)
+
 
         flash("Livro cadastrado com sucesso!")
-        return redirect(url_for("livros.home"))
+        return redirect(url_for(""))
 
     return render_template("")
+
+
+@livros_bp.route("/livros/buscar", methods=["GET", "POST"])
+def buscar_livro():
+
+    livro=None
+
+    if request.method == "POST":
+        titulo = request.form.get("titulo")
+
+        if titulo:
+            livro = buscar_livro_titulo(titulo)
+
+        if livro is None:
+            flash("Livro não encontrado.")
+
+    return render_template("", livro=livro)
 
 
 
