@@ -117,6 +117,7 @@ def emprestar_livro():
     leitores = leitor_existe()
 
     if request.method == "POST":
+
         titulo = request.form.get("titulo")
         leitor_nome = request.form.get("leitor_nome")
 
@@ -135,6 +136,7 @@ def emprestar_livro():
 @livros_bp.route("/livros/devolver", methods=["GET", "POST"])
 def devolver_livro():
     if request.method == "POST":
+
         titulo = request.form.get("titulo")
         leitor_nome = request.form.get("leitor_nome")
 
@@ -156,6 +158,7 @@ def devolver_livro():
 @livros_bp.route("/livros/filtrar", methods=["GET", "POST"])
 def filtrar_livro():
     livros = []
+    
     tipo = request.values.get("tipo")
     valor = request.values.get("valor")
 
