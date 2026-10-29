@@ -1,12 +1,23 @@
-from flask import render_template, request,  redirect, url_for,flash, session
+from flask import render_template, request,  redirect, url_for,flash
 from blueprints.livros import livros_bp
 from models import Livro
-import database
+from database import _Sessao
+from sqlalchemy import select
 
 
 from crud import (
-    adicionar_livro,buscar_livro_titulo
+    adicionar_livro as cadastrar_livro,
+    buscar_livro_titulo,
+    emprestar_livro as realizar_emprestimo,
+    leitor_existe,
+    filtrar_livros_emprestados,
+    filtra_livros_genero,
+    filtrar_livros_autor,
+    devolver_livro as realizar_devolucao,
+    editar_livros
 )
+
+
 
 # Por enquanto em manutenção !!
 
@@ -17,7 +28,7 @@ def index():
     
 
 
-@livros_bp.route("/livros/adicionar/<int:livro_id>", methods=["GET", "POST"])
+@livros_bp.route("/livros/adicionar/", methods=["GET", "POST"])
 def adicionar_livro():
     if request.method == "POST":
         titulo = request.form.get("titulo")
@@ -64,93 +75,115 @@ def buscar_livro():
 
 
 
-
-@livros_bp.route("/livros/editar/<int:id>", methods=["GET", "POST"])
-def editar_livro(id):
-    livro=Livro.query.filter_by(id=id).first()
-
-    if livro is None:
-        return "Livro não encontrado"
-
+@livros_bp.route("/livros/editar", methods=["GET", "POST"])
+def editar_livro():
     if request.method == "POST":
-        livro.titulo =request.form.get("titulo")
-        livro.autor =request.form.get("autor")
 
-        ano = request.form.get("ano")
-        quantidade = request.form.get("quantidade")
+        titulo = request.form.get("titulo")
+        descricao = request.form.get("descricao")
 
-        livro.ano = int(ano) if ano else None
-        livro.quantidade = int(quantidade)
+        if titulo and descricao:
+            editar_livros(titulo, descricao)
+            flash("Descrição atualizada")
+        else:
+            flash("Informe o título e a nova descrição.")
 
-        database.db.session.commit()
-
-        flash("Livro atualizado com sucesso!")
         return redirect(url_for(""))
 
-    return render_template("", livro=livro)
-
-
+    return render_template("")
 
 @livros_bp.route("/livros/excluir/<int:id>", methods=["POST"])
 def excluir_livro(id):
-    livro = Livro.query.filter_by(id=id).first()
+    with _Sessao() as sessao:
+        livro = sessao.get(Livro, id)
 
-    if livro is None:
-        return " O Livro não foi  encontrado"
+        if livro is None:
+            flash("Livro não encontrado.")
+            return redirect(url_for(""))
 
-    database.db.session.delete(livro)
-    database.db.session.commit()
+        if livro.leitor:
+            flash("Não é possível excluir um livro emprestado.")
+            return redirect(url_for(""))
+
+        sessao.delete(livro)
+        sessao.commit()
 
     flash("Livro excluído com sucesso!")
     return redirect(url_for(""))
 
 
+@livros_bp.route("/livros/emprestar", methods=["GET", "POST"])
+def emprestar_livro():
+    leitores = leitor_existe()
+
+    if request.method == "POST":
+        titulo = request.form.get("titulo")
+        leitor_nome = request.form.get("leitor_nome")
+
+        if titulo and leitor_nome:
+            realizar_emprestimo(titulo, leitor_nome)
+            flash("Empréstimo processado. Confira se o livro e o leitor existem e se o livro está disponível.")
+        else:
+            flash("Informe o título do livro e o nome do leitor.")
+
+        return redirect(url_for("livros.emprestar_livro"))
+
+    return render_template("emprestar_livro.html", leitores=leitores)
 
 
 
-@livros_bp.route("/livros/emprestar/<int:id>", methods=["POST"])
-def emprestar_livro(id):
+@livros_bp.route("/livros/devolver", methods=["GET", "POST"])
+def devolver_livro():
+    if request.method == "POST":
+        titulo = request.form.get("titulo")
+        leitor_nome = request.form.get("leitor_nome")
 
-    livro=Livro.query.filter_by(id=id).first()
+        if titulo and leitor_nome:
+            realizar_devolucao(titulo, leitor_nome)
+            flash("Devolução processada. Confira se o empréstimo existia.")
+        else:
+            flash("Informe o título do livro e o nome do leitor.")
 
-    if livro is None:
-        return "Livro não encontrado"
+        return redirect(url_for("livros.devolver_livro"))
 
-    if livro.disponiveis > 0:
-
-        livro.disponiveis = livro.disponiveis - 1
-
-        database.db.session.commit()
-        flash("Livro emprestado!")
-    else:
-        flash("Não há livros disponíveis para empréstimo no momento!.")
-
-    return redirect(url_for(""))
-
-
+    return render_template(
+        "devolver_livro.html",
+        leitores=leitor_existe()
+    )
 
 
-@livros_bp.route("/livros/devolver/<int:id>", methods=["POST"])
-def devolver_livro(id):
-    livro = Livro.query.filter_by(id=id).first()
 
-    if livro is None:
-        return "Livro não encontrado"
+@livros_bp.route("/livros/filtrar", methods=["GET", "POST"])
+def filtrar_livro():
+    livros = []
+    tipo = request.values.get("tipo")
+    valor = request.values.get("valor")
 
-    if livro.disponiveis < livro.quantidade:
-        livro.disponiveis = livro.disponiveis + 1
-        database.db.session.commit()
-        flash("Livro devolvido com sucesso!")
-    else:
-        flash("Todos os livros já estão disponíveis.")
+    if tipo == "genero" and valor:
+        livros = filtra_livros_genero(valor)
 
-    return redirect(url_for(""))
+    elif tipo == "autor" and valor:
+        livros = filtrar_livros_autor(valor)
+
+    elif tipo == "emprestados":
+        livros = filtrar_livros_emprestados()
+
+    return render_template(
+        "filtrar_livro.html",
+        livros=livros
+    )
+
 
 
 @livros_bp.route("/home")
 def home():
-    livros_cadastrados = Livro.query.all()
-    return render_template("home.html", livros_cadastrados=livros_cadastrados)
+    with _Sessao() as sessao:
+        livros_cadastrados = sessao.scalars(select(Livro)).all()
+
+    return render_template(
+        "home.html",
+        livros_cadastrados=livros_cadastrados
+    )
 
 @livros_bp.route("/perfil")
 def perfil():
