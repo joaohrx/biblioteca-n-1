@@ -14,13 +14,13 @@
 
 ### Data: 15/10 e 18/10
 
-**O que foi feito:** Primeiras rotas de adicionar e buscar livro. Rotas de login, cadastro e logout
+**O que foi feito:** Primeiras rotas de adicionar de login, cadastro e logout
 
-**Dificuldade encontrada:** Não informada.
+**Dificuldade encontrada:** Tive que buscar entender  algumas informaçoes .
 
-**Como resolvi:** Não informado.
+**Como resolvi:** Foi necessario buscar e tirar duvidas em materiais, em pesquisas video aulas .
 
-**Próximo passo:** Não informado.
+**Próximo passo:** Criar as rotas de Excluir e Editar.
 
 ---
 
@@ -90,3 +90,23 @@
                     é necessario remover apenas aquele var para desfazer o relacionamento
 
 **Próximo passo:** terminar as rotas.
+
+### Data: 24/10
+
+**O que foi feito:** Rotas de editar , excluir e adptei a rota home para mostrar todos os livros cadastrados.
+
+**Dificuldade encontrada:** tive que tire duvidas e buscar entender como fazer cada.
+
+**Como resolvi:** consulta em materias, pesquisas e videos no youtube .
+
+**Próximo passo:** fazer rotas de emprestar e devolver livro.
+
+### Data: 28/10
+
+**O que foi feito:** Rotas de devolver e emprestar.
+
+**Dificuldade encontrada:** tive que tire duvidas e buscar entender como fazer cada.
+
+**Como resolvi:** consulta em materias, pesquisas e videos no youtube .
+
+**Próximo passo:** 
