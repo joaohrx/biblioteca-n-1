@@ -1,8 +1,7 @@
 from flask import Flask
 from blueprints.livros import livros_bp
 from blueprints.auth import auth_bp
-import database
-
+from database import *
 
 app = Flask(__name__)
 app.secret_key = "biblioteca_secreta"

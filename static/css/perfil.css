@@ -1,0 +1,101 @@
+.perfil {
+    padding: 45px 100px 80px;
+}
+
+.apresentacao-perfil {
+    margin-bottom: 35px;
+}
+
+.apresentacao-perfil h2 {
+    margin: 0;
+    font-size: 52px;
+    line-height: 1.12;
+    font-weight: normal;
+    letter-spacing: -1px;
+}
+
+.apresentacao-perfil p {
+    margin: 15px 0 0;
+    font-size: 19px;
+}
+
+.acervo {
+    max-width: 712px;
+}
+
+.livros-grid {
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    column-gap: 29px;
+    row-gap: 25px;
+}
+
+.livro-card {
+    min-width: 0;
+}
+
+.livro-capa {
+    width: 100%;
+    aspect-ratio: .776;
+    overflow: hidden;
+    background-color: #f2eee6;
+    border: 1px solid #d6cec2;
+}
+
+.livro-capa img {
+    display: block;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.livro-card h3 {
+    margin: 7px 0 3px;
+    font-size: 25px;
+    font-weight: normal;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+.livro-card p {
+    margin: 0;
+    font-size: 16px;
+    color: #39332c;
+}
+
+.sem-livros {
+    font-size: 18px;
+    color: #655d52;
+}
+
+@media (max-width: 950px) {
+    .perfil {
+        padding: 35px 40px 60px;
+    }
+
+    .livros-grid {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+}
+
+@media (max-width: 600px) {
+    .perfil {
+        padding: 30px 25px 50px;
+    }
+
+    .apresentacao-perfil h2 {
+        font-size: 42px;
+    }
+
+    .livros-grid {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+        gap: 20px 15px;
+    }
+}
+
+@media (max-width: 350px) {
+    .livros-grid {
+        grid-template-columns: 1fr;
+    }
+}

@@ -1,4 +1,40 @@
 {% extends "base.html" %}
-{% block titulo %} Visualizar Perfil {% endblock %}
+
+{% block titulo %}Meu perfil | Biblioteca n+1{% endblock %}
+
+{% block estilos %}
+<link rel="stylesheet" href="{{ url_for('static', filename='css/perfil.css') }}">
+{% endblock %}
+
 {% block conteudo %}
+<main class="perfil">
+
+    <section class="apresentacao-perfil">
+        <h2>{{ usuario.nome }}</h2>
+        <p>Livros emprestados:</p>
+    </section>
+
+    <section class="acervo">
+        {% if livros %}
+            <div class="livros-grid">
+                {% for livro in livros %}
+                    <article class="livro-card">
+                        <div class="livro-capa">
+                            {% if livro.capa %}
+                                <img src="{{ url_for('static', filename=livro.capa) }}"
+                                     alt="Capa de {{ livro.titulo }}">
+                            {% endif %}
+                        </div>
+
+                        <h3>{{ livro.titulo }}</h3>
+                        <p>{{ livro.autor.nome }}</p>
+                    </article>
+                {% endfor %}
+            </div>
+        {% else %}
+            <p class="sem-livros">Você ainda não possui livros emprestados.</p>
+        {% endif %}
+    </section>
+
+</main>
 {% endblock %}

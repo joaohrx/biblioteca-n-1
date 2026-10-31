@@ -14,13 +14,13 @@
 
 ### Data: 15/10 e 18/10
 
-**O que foi feito:** Primeiras rotas de adicionar e buscar livro.
+**O que foi feito:** Primeiras rotas de adicionar de login, cadastro e logout
 
-**Dificuldade encontrada:** Não informada.
+**Dificuldade encontrada:** Tive que buscar entender  algumas informaçoes .
 
-**Como resolvi:** Não informado.
+**Como resolvi:** Foi necessario buscar e tirar duvidas em materiais, em pesquisas video aulas .
 
-**Próximo passo:** Não informado.
+**Próximo passo:** Criar as rotas de Excluir e Editar.
 
 ---
 
@@ -28,11 +28,11 @@
 
 **O que foi feito:** A criação básica do banco de dados, com a criação das tabelas livros, autores e leitores. A tabela leitores_livros foi criada e todos os `relationship` foram feitos, com todos os relacionamentos. O arquivo `seed.py` foi deletado, pois não há utilidade para ele. Rotas de cadastro, login e logout também foram feitas.
 
-**Dificuldade encontrada:** Não informada.
+**Dificuldade encontrada:** as tabelas não estavam sendo criadas.
 
-**Como resolvi:** Não informado.
+**Como resolvi:** usei a função criar_banco no init.db.
 
-**Próximo passo:** Não informado.
+**Próximo passo:** criar o crud e organizar os arquivos.
 
 ---
 
@@ -40,11 +40,11 @@
 
 **O que foi feito:** Um pequeno início da classe declarative (`Base`) e foi feita a classe `Usuario` e `Livro` com seus relacionamentos e atributos como nome, id, email, titulo, usuario_id etc.
 
-**Dificuldade encontrada:** Não informada.
+**Dificuldade encontrada:** nenhuma.
 
 **Como resolvi:** Não informado.
 
-**Próximo passo:** Não informado.
+**Próximo passo:** estruturar o crud.
 
 ---
 
@@ -52,11 +52,11 @@
 
 **O que foi feito:** O arquivo `crud.py` foi criado e todos os testes foram feitos.
 
-**Dificuldade encontrada:** Não informada.
+**Dificuldade encontrada:** nenhuma.
 
 **Como resolvi:** Não informado.
 
-**Próximo passo:** Não informado.
+**Próximo passo:** estruturar o crud.
 
 ---
 
@@ -69,3 +69,72 @@
 **Como resolvi:** Corrigi o nome dos Blueprints e adaptei o código das rotas para se adequar à nomenclatura do Banco.
 
 **Próximo passo:** Fazer os templates individuais e as consultas do CRUD.
+
+### Data: 23/10
+
+**O que foi feito:** funções de filtragem, adição e busca dentro do aquivo crud.py
+
+**Dificuldade encontrada:** nenhuma.
+
+**Como resolvi:** .
+
+**Próximo passo:** terminar as outras filtagrem e buscas.
+
+
+### Data: 27/10
+
+**O que foi feito:** todas as buscas, filtragen, adição e edição foram adicionadas e testadas
+**Dificuldade encontrada:** apagar o as informações da tabela auxiliar.
+
+**Como resolvi:**  para resolver o problema, foi necessario usar o remove, pois como leitor armazena uma lista de livros
+                    é necessario remover apenas aquele var para desfazer o relacionamento
+
+**Próximo passo:** terminar as rotas.
+
+### Data: 24/10
+
+**O que foi feito:** Rotas de editar , excluir e adptei a rota home para mostrar todos os livros cadastrados.
+
+**Dificuldade encontrada:** tive que tire duvidas e buscar entender como fazer cada.
+
+**Como resolvi:** consulta em materias, pesquisas e videos no youtube .
+
+**Próximo passo:** fazer rotas de emprestar e devolver livro.
+
+### Data: 28/10
+
+**O que foi feito:** Rotas de devolver e emprestar.
+
+**Dificuldade encontrada:** tive que tire duvidas e buscar entender como fazer cada.
+
+**Como resolvi:** consulta em materias, pesquisas e videos no youtube .
+
+**Próximo passo:** 
+---
+
+### Data: 23/10
+**O que foi feito:** Criação da pasta `static` com o CSS das páginas individuais, design e conteúdo dos primeiros templates-filhos: index, login e cadastro.
+
+**Dificuldade encontrada:** Dificuldades para igualizar o rodapé em todas as páginas.
+
+**Como resolvi:** Definindo margin-auto no `footer` e ajustando o corpo no template-base.
+
+**Próximo passo:** Desenvolver os templates-filhos restantes e seus respectivos estilos
+
+### Data: 30/10
+**O que foi feito:** Finalização dos templates-filhos restantes: perfil, detalhes do livro, home, com seus respectivos estilos.
+
+**Dificuldade encontrada:** Como testar se os templates estão funcionando visualmente sem integração com as demais Branches
+
+**Como resolvi:** Criando uma rota de testes que foi subsequentemente deletada
+
+**Próximo passo:** Nenhum. Templates concluídos
+
+### Data: 31/10
+**O que foi feito:** Integração entre todas as branches. Ajustes para funcionamentos: rotas, ajustes nos Modelos e nos templates
+
+**Dificuldade encontrada:** Dificuldades com a rota de Editar
+
+**Como resolvi:** Atualizando o valor no formulário html e ajustando
+
+**Próximo passo:** Projeto finalizado
