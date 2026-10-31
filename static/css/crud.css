@@ -1,0 +1,81 @@
+
+#bem_vindo_crud {
+    width: 90%;
+    max-width: 400px;
+    margin: 32px auto 10px;
+
+    font-family: "Adobe Caslon";
+    font-size: 32px;
+    font-weight: normal;
+    text-align: left;
+    letter-spacing: -0.5px;
+
+    color: #29251f;
+    border-bottom: 1px solid #b8ad9c;
+}
+
+form {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+
+    width: 90%;
+    max-width: 400px;
+    margin: 0 auto 40px;
+    padding: 24px;
+
+    background-color: #f2eee6;
+    border: 1px solid #c9c0b2;
+}
+
+input {
+    width: 100%;
+    padding: 10px 2px;
+
+    font-family: "Adobe Caslon", Times, serif;
+    font-size: 17px;
+    color: #29251f;
+
+    background: transparent;
+    border: none;
+    border-bottom: 1px solid #c9c0b2;
+    border-radius: 0;
+    outline: none;
+
+    transition: border-color 0.2s;
+}
+
+input::placeholder {
+    color: #81786c;
+    opacity: 1;
+}
+
+input:focus {
+    border-bottom-color: #655548;
+}
+
+button {
+    margin-top: 4px;
+    padding: 12px;
+
+    font-family: "Adobe Caslon", Times, serif;
+    font-size: 17px;
+    letter-spacing: 0.2px;
+    color: #f2eee6;
+
+    background-color: #39332c;
+    border: 1px solid #39332c;
+    border-radius: 0;
+    cursor: pointer;
+
+    transition: background-color 0.2s, color 0.2s;
+}
+
+button:hover {
+    color: #29251f;
+    background-color: #e4dccf;
+}
+
+.conteudo-main {
+    flex: 1;
+}
