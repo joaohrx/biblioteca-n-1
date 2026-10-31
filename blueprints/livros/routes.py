@@ -13,33 +13,14 @@ def index():
     
 
 
-@livros_bp.route("/livros/adicionar/<int:livro_id>", methods=["GET", "POST"])
+@livros_bp.route("/adicionar_livro", methods=["GET", "POST"])
 def adicionar_livro():
-    if request.method == "POST":
-        titulo = request.form.get("titulo")
-        autor = request.form.get("autor")
-        ano = request.form.get("ano")
-        quantidade = request.form.get("quantidade")
-
-        if not titulo or not autor:
-            flash("Preencha o título e o autor.", "erro")
-            return render_template("livros/formulario.html")
-
-        livro = Livro(
-            titulo=titulo,
-            autor=autor,
-            ano=int(ano) if ano else None,
-            quantidade=int(quantidade),
-            disponiveis=int(quantidade)
-        )
-
-        db.session.add(livro)
-        db.session.commit()
-
-        flash("Livro cadastrado com sucesso!", "sucesso")
-        return redirect(url_for("livros.home"))
-
     return render_template("adicionar_livro.html")
+
+
+@livros_bp.route("/livros/editar/<int:livro_id>", methods=["GET", "POST"])
+def editar_livro():
+    return render_template("editar_livro.html")
 
 @livros_bp.route("/home")
 def home():
@@ -48,4 +29,3 @@ def home():
 @livros_bp.route("/perfil")
 def perfil():
     return render_template("perfil.html")
-

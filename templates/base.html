@@ -21,7 +21,7 @@
                 <a href="{{ url_for('auth.cadastro') }}">Cadastro</a>
                 <a href="{{ url_for('auth.login') }}">Login</a>
             {% else %}
-                <a href="{{ url_for(livros.home) }}">Home</a>
+                <a href="{{ url_for('livros.home') }}">Home</a>
                 <a href="{{ url_for('livros.perfil') }}">Perfil</a>
                 <a href="{{ url_for('auth.logout') }}">Sair</a>
             {% endif %}

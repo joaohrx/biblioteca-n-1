@@ -80,3 +80,12 @@
 **Como resolvi:** Definindo margin-auto no `footer` e ajustando o corpo no template-base.
 
 **Próximo passo:** Desenvolver os templates-filhos restantes e seus respectivos estilos
+
+### Data: 30/10
+**O que foi feito:** Finalização dos templates-filhos restantes: perfil, detalhes do livro, home, com seus respectivos estilos.
+
+**Dificuldade encontrada:** Como testar se os templates estão funcionando visualmente sem integração com as demais Branches
+
+**Como resolvi:** Criando uma rota de testes que foi subsequentemente deletada
+
+**Próximo passo:** Nenhum. Templates concluídos

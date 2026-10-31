@@ -1,12 +1,27 @@
 {% extends "base.html" %}
-{% block titulo %} Editar livro {% endblock %}
+{% block titulo %} Adicionar livro {% endblock %}
 
 {% block estilos %}
 <link rel="stylesheet"
       href="{{ url_for('static', filename='css/crud.css') }}">
 {% endblock %}
 
-
-
 {% block conteudo %}
+<main class="conteudo-main">
+<h1 id="bem_vindo_crud">Editar livro</h1>
+<form method="POST" enctype="multipart/form-data">
+    <input type="text" name="titulo" id="titulo" placeholder="Título">
+    <input type="text" name="autor" id="autor" placeholder="Autor">
+    <input type="number" name="ano" id="ano" placeholder="Ano de publicação">
+    <input type="text" name="genero" id="genero" placeholder="Gênero">
+    <input type="file" name="capa" id="capa" accept="image/*" data-placeholder="Foto da capa (opcional)">
+
+
+    <textarea id="descricao" name="descricao" rows="5" cols="40" placeholder="Descrição do livro (opcional)"></textarea>
+
+    <button type="submit">Cadastrar</button>
+
+    </form>
+
+</main>
 {% endblock %}

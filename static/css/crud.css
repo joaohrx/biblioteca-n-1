@@ -79,3 +79,22 @@ button:hover {
 .conteudo-main {
     flex: 1;
 }
+
+input[type="file"]::file-selector-button {
+    display: none;
+}
+
+
+input[type="file"] {
+    color: transparent;
+    cursor: pointer;
+    line-height: 0; 
+    padding: 0 2px;
+}
+
+input[type="file"]::after {
+    content: attr(data-placeholder);
+    color: #81786c; /* Mesma cor dos seus outros placeholders */
+    display: block;
+    padding: 24px 0; 
+}
