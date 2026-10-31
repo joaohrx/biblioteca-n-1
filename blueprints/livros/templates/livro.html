@@ -19,19 +19,11 @@
     <section class="livro-principal">
 
         <div class="capa-container">
-            {% if livro.capa %}
-                <img
-                    src="{{ url_for('static', filename=livro.capa) }}"
-                    alt="Capa de {{ livro.titulo }}"
-                >
-            {% else %}
-                <div class="sem-capa">
-                    <span>Biblioteca n+1</span>
-                    <p>Sem capa disponível</p>
-                </div>
-            {% endif %}
+            <div class="sem-capa">
+                <span>Biblioteca n+1</span>
+                <p>Sem capa disponível</p>
+            </div>
         </div>
-
 
         <div class="informacoes-livro">
 
@@ -66,10 +58,10 @@
                     <dd>
                         {% if emprestado_pelo_usuario|default(false) %}
                             Emprestado por você
-                        {% elif livro.disponiveis|default(0) > 0 %}
-                            Disponível
-                        {% else %}
+                        {% elif livro.emprestado %}
                             Indisponível
+                        {% else %}
+                            Disponível
                         {% endif %}
                     </dd>
                 </div>
@@ -78,29 +70,35 @@
 
             <div class="acoes-livro">
 
-                <a href="#"
+                <a href="{{ url_for('livros.editar_livro', id=livro.id) }}"
                    class="botao botao-secundario">
                     Editar
                 </a>
 
-                <a href="#"
-                   class="botao botao-excluir">
-                    Apagar
-                </a>
+                <form action="{{ url_for('livros.excluir_livro', id=livro.id) }}"
+                      method="POST">
+                    <button type="submit" class="botao botao-excluir">
+                        Apagar
+                    </button>
+                </form>
 
                 {% if emprestado_pelo_usuario|default(false) %}
 
-                    <a href="#"
-                       class="botao botao-principal">
-                        Devolver livro
-                    </a>
+                    <form action="{{ url_for('livros.devolver_livro', id=livro.id) }}"
+                          method="POST">
+                        <button type="submit" class="botao botao-principal">
+                            Devolver livro
+                        </button>
+                    </form>
 
-                {% elif livro.disponiveis|default(0) > 0 %}
+                {% elif not livro.emprestado %}
 
-                    <a href="#"
-                       class="botao botao-principal">
-                        Emprestar livro
-                    </a>
+                    <form action="{{ url_for('livros.emprestar_livro', id=livro.id) }}"
+                          method="POST">
+                        <button type="submit" class="botao botao-principal">
+                            Emprestar livro
+                        </button>
+                    </form>
 
                 {% else %}
 
@@ -115,7 +113,6 @@
         </div>
 
     </section>
-
 
     {% if livro.descricao %}
     <section class="descricao-livro">

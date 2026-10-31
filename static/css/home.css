@@ -40,6 +40,19 @@
     row-gap: 10px;
 }
 
+.livros-grid > a {
+    display: block;
+    min-width: 0;
+    color: inherit;
+    text-decoration: none;
+}
+
+.livros-grid > a:hover .livro-card h3 {
+    text-decoration: underline;
+    text-decoration-color: #8b7355;
+    text-underline-offset: 2px;
+}
+
 /* Cards */
 
 .livro-card {

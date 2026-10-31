@@ -26,19 +26,17 @@
 
         <div class="livros-grid">
             {% for livro in livros %}
-                <article class="livro-card">
+                <a href="{{ url_for('livros.detalhes_livro', id=livro.id) }}">
+                    <article class="livro-card">
 
-                    <div class="livro-capa">
-                        {% if livro.capa %}
-                            <img src="{{ url_for('static', filename=livro.capa) }}"
-                                 alt="Capa de {{ livro.titulo }}">
-                        {% endif %}
-                    </div>
+                        <div class="livro-capa">
+                        </div>
 
-                    <h3>{{ livro.titulo }}</h3>
-                    <p>{{ livro.autor.nome }}</p>
+                        <h3>{{ livro.titulo }}</h3>
+                        <p>{{ livro.autor.nome }}</p>
 
-                </article>
+                    </article>
+                </a>
             {% else %}
                 <p class="sem-livros">
                     Nenhum livro encontrado.
@@ -47,7 +45,7 @@
         </div>
 
         <a class="adicionar"
-           href="#"
+           href="{{ url_for('livros.adicionar_livro') }}"
            title="Adicionar livro">+</a>
 
     </section>

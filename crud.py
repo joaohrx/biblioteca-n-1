@@ -119,5 +119,3 @@ def editar_livros(titulo, auteracao):
         if livro_encontrado:
             livro_encontrado.descricao = auteracao
             sessao.commit()
-
-editar_livros("hora da estrela", "bom é pouco, ele é massa")

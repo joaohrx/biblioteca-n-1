@@ -17,7 +17,7 @@ class Livro(Base):
 
     id: Mapped[int] = mapped_column(Integer, primary_key = True)
     titulo: Mapped[str] = mapped_column(String(50))
-    ano: Mapped[int] = mapped_column() 
+    ano: Mapped[int] = mapped_column(Integer) 
     emprestado: Mapped[bool] = mapped_column(Boolean, default=False)
     genero: Mapped[str] = mapped_column(String(50))
     descricao: Mapped[str] = mapped_column(String(100))
@@ -43,6 +43,7 @@ class Leitor(Base):
 
     id: Mapped[int] = mapped_column(Integer, primary_key = True)
     nome: Mapped[str] = mapped_column(String(100), unique = True)
+    email: Mapped[str] = mapped_column(String(100), unique = True)
     senha_hash: Mapped[str] = mapped_column(Text)
 
     livro_leitor: Mapped[List[Livro]] = relationship(

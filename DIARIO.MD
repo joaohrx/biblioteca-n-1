@@ -129,3 +129,12 @@
 **Como resolvi:** Criando uma rota de testes que foi subsequentemente deletada
 
 **Próximo passo:** Nenhum. Templates concluídos
+
+### Data: 31/10
+**O que foi feito:** Integração entre todas as branches. Ajustes para funcionamentos: rotas, ajustes nos Modelos e nos templates
+
+**Dificuldade encontrada:** Dificuldades com a rota de Editar
+
+**Como resolvi:** Atualizando o valor no formulário html e ajustando
+
+**Próximo passo:** Projeto finalizado
