@@ -1,4 +1,129 @@
+
 {% extends "base.html" %}
-{% block titulo %} Visualizar Livro {% endblock %}
+
+{% block titulo %}{{ livro.titulo }} | Biblioteca n+1{% endblock %}
+
+{% block estilos %}
+<link rel="stylesheet"
+      href="{{ url_for('static', filename='css/livro.css') }}">
+{% endblock %}
+
 {% block conteudo %}
+
+<main class="detalhes-livro">
+
+    <a class="voltar" href="{{ url_for('livros.home') }}">
+        ← Voltar ao acervo
+    </a>
+
+    <section class="livro-principal">
+
+        <div class="capa-container">
+            {% if livro.capa %}
+                <img
+                    src="{{ url_for('static', filename=livro.capa) }}"
+                    alt="Capa de {{ livro.titulo }}"
+                >
+            {% else %}
+                <div class="sem-capa">
+                    <span>Biblioteca n+1</span>
+                    <p>Sem capa disponível</p>
+                </div>
+            {% endif %}
+        </div>
+
+
+        <div class="informacoes-livro">
+
+            <p class="identificacao">DETALHES DA OBRA</p>
+
+            <h2>{{ livro.titulo }}</h2>
+
+            <p class="autor">
+                {{ livro.autor.nome }}
+            </p>
+
+            <div class="linha"></div>
+
+            <dl class="atributos">
+
+                {% if livro.ano %}
+                <div>
+                    <dt>Ano de publicação</dt>
+                    <dd>{{ livro.ano }}</dd>
+                </div>
+                {% endif %}
+
+                {% if livro.genero %}
+                <div>
+                    <dt>Gênero</dt>
+                    <dd>{{ livro.genero }}</dd>
+                </div>
+                {% endif %}
+
+                <div>
+                    <dt>Disponibilidade</dt>
+                    <dd>
+                        {% if emprestado_pelo_usuario|default(false) %}
+                            Emprestado por você
+                        {% elif livro.disponiveis|default(0) > 0 %}
+                            Disponível
+                        {% else %}
+                            Indisponível
+                        {% endif %}
+                    </dd>
+                </div>
+
+            </dl>
+
+            <div class="acoes-livro">
+
+                <a href="#"
+                   class="botao botao-secundario">
+                    Editar
+                </a>
+
+                <a href="#"
+                   class="botao botao-excluir">
+                    Apagar
+                </a>
+
+                {% if emprestado_pelo_usuario|default(false) %}
+
+                    <a href="#"
+                       class="botao botao-principal">
+                        Devolver livro
+                    </a>
+
+                {% elif livro.disponiveis|default(0) > 0 %}
+
+                    <a href="#"
+                       class="botao botao-principal">
+                        Emprestar livro
+                    </a>
+
+                {% else %}
+
+                    <button class="botao botao-indisponivel" disabled>
+                        Indisponível para empréstimo
+                    </button>
+
+                {% endif %}
+
+            </div>
+
+        </div>
+
+    </section>
+
+
+    {% if livro.descricao %}
+    <section class="descricao-livro">
+        <h3>Sobre a obra</h3>
+        <p>{{ livro.descricao }}</p>
+    </section>
+    {% endif %}
+
+</main>
+
 {% endblock %}

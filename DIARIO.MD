@@ -110,3 +110,22 @@
 **Como resolvi:** consulta em materias, pesquisas e videos no youtube .
 
 **Próximo passo:** 
+---
+
+### Data: 23/10
+**O que foi feito:** Criação da pasta `static` com o CSS das páginas individuais, design e conteúdo dos primeiros templates-filhos: index, login e cadastro.
+
+**Dificuldade encontrada:** Dificuldades para igualizar o rodapé em todas as páginas.
+
+**Como resolvi:** Definindo margin-auto no `footer` e ajustando o corpo no template-base.
+
+**Próximo passo:** Desenvolver os templates-filhos restantes e seus respectivos estilos
+
+### Data: 30/10
+**O que foi feito:** Finalização dos templates-filhos restantes: perfil, detalhes do livro, home, com seus respectivos estilos.
+
+**Dificuldade encontrada:** Como testar se os templates estão funcionando visualmente sem integração com as demais Branches
+
+**Como resolvi:** Criando uma rota de testes que foi subsequentemente deletada
+
+**Próximo passo:** Nenhum. Templates concluídos

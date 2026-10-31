@@ -178,6 +178,11 @@ def filtrar_livro():
 
 
 
+
+@livros_bp.route("/livros/editar/<int:livro_id>", methods=["GET", "POST"])
+def editar_livro():
+    return render_template("editar_livro.html")
+
 @livros_bp.route("/home")
 def home():
     with _Sessao() as sessao:

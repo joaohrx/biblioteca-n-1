@@ -1,0 +1,170 @@
+
+.home {
+    padding: 35px 100px 80px;
+}
+
+
+.apresentacao {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    margin-bottom: 32px;
+}
+
+.apresentacao h2 {
+    margin: 0;
+    font-size: 52px;
+    line-height: 1.12;
+    font-weight: normal;
+    letter-spacing: -1px;
+}
+
+.apresentacao p {
+    margin: 18px 0 0;
+    font-size: 17px;
+    line-height: 1.3;
+}
+
+
+.acervo {
+    display: grid;
+    grid-template-columns: minmax(0, 712px) 1fr;
+    gap: 35px;
+    align-items: start;
+}
+
+.livros-grid {
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    column-gap: 29px;
+    row-gap: 10px;
+}
+
+/* Cards */
+
+.livro-card {
+    min-width: 0;
+}
+
+.livro-capa {
+    width: 100%;
+    aspect-ratio: 0.776;
+
+    overflow: hidden;
+    background-color: #f2eee6;
+    border: 1px solid #d6cec2;
+}
+
+.livro-capa img {
+    display: block;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.livro-card h3 {
+    margin: 7px 0 3px;
+    font-size: 25px;
+    font-weight: normal;
+
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+.livro-card p {
+    margin: 0;
+    font-size: 16px;
+    color: #39332c;
+}
+
+
+.adicionar {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    width: 46px;
+    height: 46px;
+    margin: 7px auto 0;
+
+    font-family: Arial, sans-serif;
+    font-size: 35px;
+    font-weight: normal;
+    line-height: 1;
+
+    color: #f2eee6;
+    background-color: #29251f;
+    border-radius: 50%;
+    text-decoration: none;
+
+    transition: background-color 0.2s;
+}
+
+.adicionar:hover {
+    background-color: #655548;
+}
+
+
+.sem-livros {
+    font-size: 18px;
+    color: #655d52;
+}
+
+
+
+@media (max-width: 950px) {
+    .home {
+        padding: 35px 40px 60px;
+    }
+
+    .acervo {
+        grid-template-columns: 1fr auto;
+        gap: 20px;
+    }
+
+    .livros-grid {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+}
+
+@media (max-width: 600px) {
+    .home {
+        padding: 30px 25px 50px;
+    }
+
+    .apresentacao {
+        flex-direction: column;
+        gap: 25px;
+    }
+
+    .apresentacao h2 {
+        font-size: 42px;
+    }
+
+    .pesquisa {
+        width: 100%;
+    }
+
+    .acervo {
+        grid-template-columns: 1fr;
+    }
+
+    .livros-grid {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+        gap: 20px 15px;
+    }
+
+    .adicionar {
+        position: fixed;
+        right: 25px;
+        bottom: 30px;
+        margin: 0;
+    }
+}
+
+@media (max-width: 350px) {
+    .livros-grid {
+        grid-template-columns: 1fr;
+    }
+}

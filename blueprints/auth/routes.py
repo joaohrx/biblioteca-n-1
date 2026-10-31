@@ -17,17 +17,8 @@ def cadastro():
             flash("Preencha todos os campos.", "erro")
             return render_template("cadastro.html")
 
-        usuario = Usuario(
-            nome=nome,
-            email=email,
-            senha=generate_password_hash(senha)
-        )
-
-        database.db.session.add(usuario)
-        database.db.session.commit()
-
         flash("Cadastro realizado com sucesso!")
-        return redirect(url_for("login.html"))
+        return redirect(url_for("auth.login"))
 
     return render_template("cadastro.html")
 

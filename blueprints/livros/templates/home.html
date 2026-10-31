@@ -1,4 +1,57 @@
+
 {% extends "base.html" %}
-{% block titulo %} Home {% endblock %}
+
+{% block titulo %}Biblioteca n+1{% endblock %}
+
+{% block estilos %}
+<link rel="stylesheet"
+      href="{{ url_for('static', filename='css/home.css') }}">
+{% endblock %}
+
 {% block conteudo %}
+
+<main class="home">
+
+    <section class="apresentacao">
+        <div>
+            <h2>Uma biblioteca<br>para todos.</h2>
+            <p>
+                Livros disponíveis, livros, livros para<br>
+                você comprar e ler.
+            </p>
+        </div>
+    </section>
+
+    <section class="acervo">
+
+        <div class="livros-grid">
+            {% for livro in livros %}
+                <article class="livro-card">
+
+                    <div class="livro-capa">
+                        {% if livro.capa %}
+                            <img src="{{ url_for('static', filename=livro.capa) }}"
+                                 alt="Capa de {{ livro.titulo }}">
+                        {% endif %}
+                    </div>
+
+                    <h3>{{ livro.titulo }}</h3>
+                    <p>{{ livro.autor.nome }}</p>
+
+                </article>
+            {% else %}
+                <p class="sem-livros">
+                    Nenhum livro encontrado.
+                </p>
+            {% endfor %}
+        </div>
+
+        <a class="adicionar"
+           href="#"
+           title="Adicionar livro">+</a>
+
+    </section>
+
+</main>
+
 {% endblock %}

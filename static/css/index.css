@@ -1,0 +1,91 @@
+
+/* Conteúdo principal da página inicial */
+
+main {
+    flex: 1;
+    display: grid;
+    grid-template-columns: minmax(0, 1fr) minmax(0, 0.9fr);
+    align-items: center;
+    gap: 64px;
+
+    margin: 0;
+    padding: 24px 6.5%;
+}
+
+main section {
+    max-width: 570px;
+    transform: translateY(-28px);
+}
+
+/* Texto introdutório */
+
+main section p {
+    margin: 0 0 22px;
+    color: #81786c;
+    font-size: 13px;
+    letter-spacing: 2px;
+    line-height: 1.5;
+}
+
+/* Título principal */
+
+main h2 {
+    max-width: 500px;
+    margin: 0 0 16px;
+    color: #29251f;
+    font-size: clamp(42px, 4.2vw, 62px);
+    line-height: 1.08;
+    font-weight: normal;
+    letter-spacing: -1.2px;
+}
+
+/* Descrição da biblioteca */
+
+main section div {
+    max-width: 450px;
+    padding-top: 14px;
+    border-top: 1px solid #b8ad9c;
+
+    color: #655d52;
+    font-size: 18px;
+    line-height: 1.7;
+}
+
+/* Links de navegação da página inicial */
+
+main nav {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: 28px;
+    margin-top: 30px;
+}
+
+main nav a {
+    padding: 0 0 7px;
+    color: #39332c;
+    font-size: 16px;
+    text-decoration: none;
+    border-bottom: 1px solid #b8ad9c;
+    transition: color 0.2s, border-color 0.2s;
+}
+
+main nav a:hover {
+    color: #81786c;
+    border-color: #39332c;
+}
+
+.imagem {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.imagem img {
+    display: block;
+    width: 100%;
+    max-width: 400px;
+    height: auto;
+    object-fit: contain;
+}
