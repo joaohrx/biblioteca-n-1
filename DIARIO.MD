@@ -70,6 +70,8 @@
 
 **Próximo passo:** Fazer os templates individuais e as consultas do CRUD.
 
+---
+
 ### Data: 23/10
 
 **O que foi feito:** funções de filtragem, adição e busca dentro do aquivo crud.py
@@ -80,16 +82,18 @@
 
 **Próximo passo:** terminar as outras filtagrem e buscas.
 
+--- 
 
-### Data: 27/10
+### Data: 23/10
+**O que foi feito:** Criação da pasta `static` com o CSS das páginas individuais, design e conteúdo dos primeiros templates-filhos: index, login e cadastro.
 
-**O que foi feito:** todas as buscas, filtragen, adição e edição foram adicionadas e testadas
-**Dificuldade encontrada:** apagar o as informações da tabela auxiliar.
+**Dificuldade encontrada:** Dificuldades para igualizar o rodapé em todas as páginas.
 
-**Como resolvi:**  para resolver o problema, foi necessario usar o remove, pois como leitor armazena uma lista de livros
-                    é necessario remover apenas aquele var para desfazer o relacionamento
+**Como resolvi:** Definindo margin-auto no `footer` e ajustando o corpo no template-base.
 
-**Próximo passo:** terminar as rotas.
+**Próximo passo:** Desenvolver os templates-filhos restantes e seus respectivos estilos
+
+---
 
 ### Data: 24/10
 
@@ -101,6 +105,21 @@
 
 **Próximo passo:** fazer rotas de emprestar e devolver livro.
 
+---
+
+### Data: 27/10
+
+**O que foi feito:** todas as buscas, filtragen, adição e edição foram adicionadas e testadas
+
+**Dificuldade encontrada:** apagar o as informações da tabela auxiliar.
+
+**Como resolvi:**  para resolver o problema, foi necessario usar o remove, pois como leitor armazena uma lista de livros
+é necessario remover apenas aquele var para desfazer o relacionamento
+
+**Próximo passo:** terminar as rotas.
+
+---
+
 ### Data: 28/10
 
 **O que foi feito:** Rotas de devolver e emprestar.
@@ -109,17 +128,9 @@
 
 **Como resolvi:** consulta em materias, pesquisas e videos no youtube .
 
-**Próximo passo:** 
+**Próximo passo:**
+ 
 ---
-
-### Data: 23/10
-**O que foi feito:** Criação da pasta `static` com o CSS das páginas individuais, design e conteúdo dos primeiros templates-filhos: index, login e cadastro.
-
-**Dificuldade encontrada:** Dificuldades para igualizar o rodapé em todas as páginas.
-
-**Como resolvi:** Definindo margin-auto no `footer` e ajustando o corpo no template-base.
-
-**Próximo passo:** Desenvolver os templates-filhos restantes e seus respectivos estilos
 
 ### Data: 30/10
 **O que foi feito:** Finalização dos templates-filhos restantes: perfil, detalhes do livro, home, com seus respectivos estilos.
@@ -129,6 +140,8 @@
 **Como resolvi:** Criando uma rota de testes que foi subsequentemente deletada
 
 **Próximo passo:** Nenhum. Templates concluídos
+
+---
 
 ### Data: 31/10
 **O que foi feito:** Integração entre todas as branches. Ajustes para funcionamentos: rotas, ajustes nos Modelos e nos templates
